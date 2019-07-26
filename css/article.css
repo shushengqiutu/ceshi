@@ -1,0 +1,23 @@
+h2{
+	border-bottom:1px solid #D6D6D6 !important;
+	padding:10px 0px 10px 0px !important;
+}
+.newsAndActivity-view{
+	width:100%;
+}
+.NNA-views-card-image{
+	width:40%;
+}
+.NNA-views-card-msg{
+	width:60%;
+}
+
+.newsAndActivity-view.up .NNA-views-card-msg{
+	width:100%;
+}
+.newsAndActivity-view.up .NNA-views-card{
+	height:60px;
+}
+.newsAndActivity-view.up .NNA-views-card-msg{
+	width:100%;
+}

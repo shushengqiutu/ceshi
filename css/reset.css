@@ -1,0 +1,265 @@
+/* 样式重置 */
+
+body {
+    /* font-family: 'Varela Round', sans-serif;*/
+    font-family: "MicroSoft YaHei", 'MicrosoftYaHei';
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    color: #868F9B;
+    font-weight: 100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'MicroSoft YaHei';
+    font-weight: normal;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #10161A;
+}
+
+h1 {
+    /*font-size: 54px;*/
+    /* font-size: 50px; */
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 21px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+a {
+    color: #E23938;
+    text-decoration: none;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+
+a:hover, a:focus {
+    text-decoration: none;
+    outline: none;
+    opacity: 0.8;
+    color: #E23938;
+}
+
+dt {
+    font-weight: normal;
+}
+.textLeft{
+    text-align: left;
+}
+
+.main-color {
+    color: #E23938;
+}
+
+.white-text {
+    color: #FFF;
+}
+
+.white-text.fz{ 
+    font-size: 40px;
+}
+
+::-moz-selection {
+    background-color: #E23938;
+    color: #FFF;
+}
+
+::selection {
+    background-color: #E23938;
+    color: #FFF;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+span {
+    cursor: default;
+}
+
+/* -- section  -- */
+
+.section {
+    position: relative;
+    background: #F3F3F3;
+}
+
+.md-padding {
+    padding-top: 55px;
+    padding-bottom: 55px;
+}
+
+.sm-padding {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* --  background section  -- */
+
+.bg-grey {
+    background-color: #F3F3F3;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+}
+
+.bg-white {
+    background-color: #FFFFFF;
+}
+
+.bg-dark {
+    /*//background-color: #1C1D21;*/
+    background-color: #1F2130;
+}
+
+/* --  background image section  -- */
+
+.bg-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    /*background-image: url('../img/index.gif');*/
+    /*background: grey;
+    background-position: center;
+    background-size: cover;*/
+
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: #15172F;
+
+    background-attachment: fixed;
+}
+
+.bg-img .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .8;
+    background: rgba(28, 29, 33, 0.8);
+}
+
+/* --  section header  -- */
+
+.section-header {
+    position: relative;
+    margin-bottom: 55px;
+}
+
+.section-header .title {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.title:after {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 40px;
+    background-color: #E23938;
+    margin-top: 20px;
+}
+
+.text-center .title:after {
+    margin: 8px auto 0px;
+}
+
+/* --  Input  -- */
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea {
+    height: 40px;
+    width: 100%;
+    border: none;
+    background: #E5E5E5;
+    border-bottom: 2px solid #EEE;
+    color: #354052;
+    padding: 0px 10px;
+    opacity: 0.5;
+    -webkit-transition: 0.2s border-color, 0.2s opacity;
+    transition: 0.2s border-color, 0.2s opacity;
+}
+
+textarea {
+    padding: 10px 10px;
+    min-height: 80px;
+    resize: vertical;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="url"]:focus, input[type="tel"]:focus, textarea:focus {
+    border-color: #E23938;
+    opacity: 1;
+}
+
+input[type='button'], button, .form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* --  Buttons  -- */
+
+.main-btn, .outline-btn {
+    display: inline-block;
+    /*begin modify by zhangyuqing*/
+    padding: 3px 23px;
+    /*width: 145px;
+    height: 50px;*/
+    /*end modify by zhangyuqing*/
+    margin: 3px;
+    border: 2px solid #FFFFFF;
+    /*border-radius: 10px;*/
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+
+.main-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #FFF;
+    /*display: none;*/
+}
+
+.main-btn a {
+    color: #FFF;
+}
+
+.outline-btn {
+    background: transparent;
+    color: #E23938 !important;
+    border-color: #E23938;
+}
+
+.outline-btn.red-btn {
+    background: #D8162A;
+    color: #FFFFFF !important;
+    border-color: #d8162a;
+    border-radius: 2px;
+}
+
+.main-btn:hover, .outline-btn:hover {
+    opacity: 0.8;
+}
+
+.outline-btn:hover {
+    opacity: 0.8;
+}

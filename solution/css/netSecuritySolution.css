@@ -1,0 +1,24 @@
+.result-content>div{
+    border: 1px solid #EEEEEE;
+}
+
+.result-content>.picDiv{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    box-sizing: border-box;
+    width: calc(83.333333% + 5px);
+    margin-top: 60px;
+    border-style: dashed;
+}
+
+.picDiv img{
+    width: 100%;
+    display: block;
+}
+
+
+.petrochemical,.firePower{
+    display: none;
+}
+
+

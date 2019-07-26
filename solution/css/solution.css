@@ -1,0 +1,154 @@
+
+
+/*-----------------------------*
+/   demand-analysis             /
+ -------------------------------*/
+
+.demand-analysis {
+    padding-bottom: 40px;
+}
+
+.tabTitle{
+    color: #333333;
+    font-size: 14px;
+    margin-bottom: 44px;
+    text-align: left;
+    text-indent: 2em;
+}
+
+.tabListMenu>ul a{
+    color: #333333;
+    font-size: 18px;
+    display: inline-block;
+    width: 258px;
+    height: 50px;
+    background: #EEEEEE;
+    border-radius: 0px;
+    margin: 1px;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: none;
+    color: #D8162A;
+}
+
+.nav-tabs,.tab-content{
+    background: #FFFFFF;
+}
+
+.tab-content{
+    text-align: left;
+    text-indent: 2em;
+    padding-top: 26px;
+    padding-bottom: 100px;
+    font-size: 14px;
+}
+
+.nav-tabs{
+    border-bottom: none;
+
+}
+
+.demand-analysis .work-font .active{
+    color: #D8162A;
+}
+
+.demand-analysis .work-font span{
+    font-size: 24px;
+    color: #333333;
+    cursor: default;
+}
+
+.demand-analysis .work-font span:hover{
+    color: #D8162A;
+}
+
+.demand-analysis .work-font p{
+    font-size: 13px;
+    color: #666666;
+    padding-top: 12px;
+    box-sizing: border-box;
+    padding-bottom: 20px;
+}
+
+/*-----------------------------*
+/   product-solution             /
+ -------------------------------*/
+.product-solution{
+    padding-bottom: 100px;
+}
+
+.product-solution .addWorkTip{
+    background: #FFFFFF;
+    text-align: left;
+    margin-top: 27.5px;
+    padding: 0px 30px 15px;
+}
+/*
+.addWorkTip .triangle .glyphicon{
+    color: #FFFFFF;
+}*/
+
+.product-solution #industrialTip .triangle {
+    left: 15%;
+}
+
+.product-solution #cloudTip .triangle {
+    left: 83%;
+}
+
+.product-solution #networkTip .triangle {
+    left: 49%;
+}
+
+.product-solution .addWorkTip img{
+    /*margin-top: 13px;*/
+    margin-top: -1px;
+}
+
+.scenarioFont{
+    font-size: 14px;
+    color: #666666;
+    line-height: 23px;
+    padding-top: 68px;
+}
+/*-----------------------------*
+/   application-running-result  /
+ -------------------------------*/
+.running-result{
+    padding-bottom: 58px;
+}
+
+.result-content div{
+    background: #FFFFFF;
+    margin-top: 4px;
+    margin-right: 4px;
+    padding: 45px 50px 60px 47px;
+    box-sizing: border-box;
+}
+
+.result-content div:hover:not(.picDiv){
+    box-shadow: 0px 0px 11px 0px #d3d2d2;
+}
+
+.result-content div:hover span{
+    color: #D8162A;
+}
+
+.result-content span:nth-child(1){
+    font-size: 18px;
+    color: #333333;
+    line-height: 43px;
+}
+
+.result-content span:nth-child(2){
+    font-size:18px;
+    color: #666666;
+    line-height: 36px;
+}
+
+.result-content p{
+    font-size: 14px;
+}
+
+

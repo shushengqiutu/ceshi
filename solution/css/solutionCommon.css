@@ -1,0 +1,104 @@
+
+/* #home header*/
+
+.footer-wrapper .active{
+    color: #E23938;
+}
+
+#home{
+    height: 450px;
+}
+
+#bgbanner{
+    /*background: none;*/
+    background-size: cover;
+}
+
+#home .home-wrapper{
+    top: 35%;
+}
+
+#home .footer-wrapper{
+    height: 11%;
+    background: rgba(255,255,255,0.3);
+}
+
+.side_imgs{
+    display: none;
+}
+
+/* #dowhat */
+.md-padding{
+    padding-top: 44px;
+    padding-bottom: 10px;
+}
+
+#dowhat{
+    text-align: center;
+}
+
+#dowhat h2{
+    color: #333333;
+    font-size: 22px;
+}
+
+.panel-default>.panel-heading{
+    height: 85px;
+    background-color: #F4F4F4;
+    border-color: #F4F4F4;
+}
+
+.panel-title{
+    margin-top: 5px;
+}
+
+.panel-title a{
+    display: inline-block;
+    color: #666666;
+    word-spacing: 10px;
+    width: 100%;
+}
+
+.panel-title a div{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.panel-default>.collapseActive{
+    background-color: #E23938;
+    border-color: #E23938;
+}
+
+.panel-default>.collapseActive a{
+    color: #FFFFFF;
+}
+
+.panel-default>.collapseActive{
+    background-color: #E23938;
+    border-color: #E23938;
+}
+
+
+
+.panel-title a div>span{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 100;
+}
+
+.panel-title a div>span:nth-child(1){
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.panel-default{
+    border: none;
+}
+
+.panel-body{
+    padding-bottom: 50px;
+    padding-top: 9px;
+}
+
+
+

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><if condition="!empty($article.post_title)">{$article.post_title} - 六方云 - 让万物安全互联<else/>六方云 - 让万物安全互联</if></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="{$site_info.site_seo_keywords|default=''}"/>
+    <meta name="description" content="{$site_info.site_seo_description|default=''}">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> -->
+    <include file="public@head"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link href="/Logo-D.ico" rel="shortcut icon">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css"/>
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css">
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/banner.css">
+    <link rel="stylesheet" type="text/css" href="/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/aboutUs/css/companyCommon.css">
+    <link rel="stylesheet" type="text/css" href="/aboutUs/css/companyProfile.css">
+    <link rel="stylesheet" type="text/css" href="/css/article.css">
+    <style>
+
+        /* ---- 新闻与活动 ---- */
+        .newsAndActivity-container {
+            display: none;
+            min-height: 255px;
+            padding-top: 39px;
+            text-align: initial;
+            background-color: #fff;
+            position: relative;
+        }
+
+        .newsAndActivity-tab, .newsAndActivity-view {
+            display: inline-block;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /* tab */
+        .newsAndActivity-tab {
+            float: left;
+            width: 13.55%;
+            height: 100%;
+            /*border-right: 1px solid #eee;*/
+            padding-right: 20px;
+        }
+
+        .newsAndActivity-tab .NAA-nav-item {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            height: 23px;
+            color: #666;
+            line-height: 23px;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: all .38s;
+        }
+
+        /* 激活状态 */
+        .newsAndActivity-tab .NAA-nav-item.active {
+            font-weight: 500;
+            color: #333;
+            border-right: 4px solid #D8162A;
+        }
+
+        /* 视图 */
+        .newsAndActivity-view {
+            width: 86%;
+            border-left: 1px solid #eee;
+            padding: 0 22px 20px 15px;
+            background-color: #fff;
+        }
+
+        /* 多个视图 对应左侧tab */
+        .newsAndActivity-view .NNA-views-item {
+            display: none;
+            transition: all .44s;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .newsAndActivity-view .NNA-views-item.active {
+            display: block;
+        }
+
+        /* 以下为单独 新闻卡片 */
+
+        .NNA-views-card-image, .NNA-views-card-msg {
+            float: left;
+            width: 50%;
+            height: 100%;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /* 新闻卡片 */
+        .NNA-views-card {
+            height: 292px;
+            padding: 20px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .NNA-views-card:hover {
+            background-color: #F7F7F7;
+        }
+
+        /* 新闻图片 */
+        .NNA-views-card-image {
+            background-color: #BFBFBF;
+        }
+
+        .NNA-views-card-image img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 新闻文字容器 */
+        .NNA-views-card-msg {
+            /*width: 254px;*/
+            /*height: 100%;*/
+            padding-left: 25px;
+            background-color: transparent;
+        }
+
+        /* 标题 */
+        .item-msg-title {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .item-msg-title a {
+            color: #333333 !important;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .item-msg-title span {
+            font-size: 12px;
+            color: #666;
+            float: right;
+        }
+
+        .item-msg-title a:hover {
+            text-decoration: underline;
+        }
+
+        /* 内容 */
+        .item-msg-content {
+            float: right;
+            text-indent: 25px;
+            height: 222px;
+            color: #666666;
+            font-size: 14px;
+            padding-top: 6px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 10;
+        }
+
+        /* 分页相关 */
+        .pageFooter {
+            margin-top: 15px;
+            height: 40px;
+        }
+
+        .pageFooter .pagination {
+            float: right;
+            margin: 0;
+        }
+
+        .pageFooter .pagination li {
+            cursor: pointer;
+        }
+
+        .pageFooter .pagination li a {
+            color: #D8162A;
+        }
+
+        .pageFooter .pagination .active a {
+            color: #fff;
+            border-color: #D8162A;
+            background-color: #D8162A;
+
+        }
+
+        /* 新闻详情页 */
+        .news-detail-container {
+            display: none;
+            /*z-index: 5;*/
+            /*position: absolute;*/
+            /*top: 0;*/
+            /*left: 0;*/
+            margin-top: -39px;
+            width: 100%;
+            /*height: 500px;*/
+            padding: 21px 55px 0 49px;
+            /*background-color: green;*/
+        }
+
+        /* 详情标题 */
+        .news-detail-container .news-detail-title {
+            margin-bottom: 15px;
+            height:auto;
+            min-height: 63px;
+            line-height: 50px;
+            border-bottom: 1px solid #EEEEEE;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        /* 标题面包屑 */
+        .title-breadcrumb {
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .title-breadcrumb i {
+            font-style: normal;
+        }
+
+        /* 大标题 */
+        .news-detail-title h1 {
+            line-height: 50px;
+            text-align: center;
+            font-size: 22px;
+            color: #333333;
+        }
+
+        /* 标题 时间 */
+        .title-time {
+            font-size: 12px;
+        }
+
+        .title-time span {
+            float: right;
+        }
+
+        /* 新闻详情 内容 */
+        .news-detail-content {
+            padding-top: 15px;
+            padding-bottom: 20px;
+            /*height: 800px;*/
+            /*background-color: violet;*/
+        }
+
+        .news-detail-title a:focus,
+        .news-detail-title a:active {
+            color: #E23938 !important;
+        }
+
+        /* 新闻详情 end */
+        .news-detail-end {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            text-align: center;
+            padding: 40px 0 25px 0;
+            /*background-color: teal;*/
+        }
+
+        /* end */
+        .news-detail-end span {
+            font-size: 22px;
+            color: #DBDBDB;
+            position: relative;
+        }
+
+        .news-detail-end span:before,
+        .news-detail-end span:after {
+            content: '';
+            width: 149px;
+            height: 1px;
+            position: absolute;
+            top: 15px;
+            background-color: #EEEEEE;
+        }
+
+        .news-detail-end span:before {
+            left: -160px;
+        }
+
+        .news-detail-end span:after {
+            right: -160px;
+        }
+
+        body{
+            color: black!important;
+            font-weight: normal!important;
+        }
+
+        /* ---- 新闻与活动 ---- */
+
+    </style>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+    <img src='/img/logo.jpg'/>
+</div>
+<body style="padding-top: 0px;">
+<!--weixin-->
+
+<div class="side_imgs">
+    <div class="weixin_chat">
+        <div class="chatTip">
+            <img src="/img/chatTip.png">
+        </div>
+    </div>
+    <div class="telephohe_chat">
+        <div class="telTip">
+            <img src="/img/telTip.png">
+        </div>
+    </div>
+</div>
+<!--/weixin-->
+
+<!-- Header -->
+<header id="home">
+    <!-- Background Image -->
+    <div id="bgbanner" class="bg-img" style="background-image: url('/productIndustrial/img/bg-superLaboratory.gif');">
+        <div class="banner" id="banner1">
+        </div>
+    </div>
+    <!-- /Background Image -->
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+        <div class="container">
+
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="/index.html">
+                        <img class="logo" src="/img/logo.png" alt="logo">
+                        <img class="logo-alt" src="/img/logo-alt.png" alt="logo">
+                    </a>
+                </div>
+                <!-- /Logo -->
+
+                <!-- Collapse nav button -->
+                <div class="nav-collapse">
+                    <span></span>
+                </div>
+                <!-- /Collapse nav button -->
+            </div>
+
+            <!--  Main navigation  -->
+            <ul class="main-nav nav navbar-nav navbar-right">
+                <li class="has-dropdown">
+                    <a href="#">
+                        产品
+                    </a>
+                    <ul class="dropdown solutionListFullScreen">
+                        <li class="triangle-con">
+                            <span class="glyphicon glyphicon-triangle-top custom-glyphicon triangleOne"></span>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>
+                                    工业安全
+                                    <hr>
+                                </dt>
+                                <dd>
+                                    <a href="/productIndustrial/industrialFirewall.html">
+                                        工业防火墙
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/industrialAudit.html">
+                                        工业审计
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/IndustrialControl.html">
+                                        监管平台
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/industrialGuards.html">
+                                        工业卫士
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/industrialSweep.html">
+                                        工业漏扫
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>网络安全
+                                    <hr>
+                                </dt>
+                                <dd>
+                                    <a href="/productIndustrial/networkSecNextWall.html">
+                                        下一代防火墙
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/networkSecDefense.html">
+                                        入侵防御系统
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/networkSecInvasion.html">
+                                        入侵检测系统
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>云安全
+                                    <hr>
+                                </dt>
+                                <dd>
+                                    <a href="/productIndustrial/sixWinton.html">
+                                        云盾CShield
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/sixCloudA.html">
+                                        云甲CArmour
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/productIndustrial/sixCloudWall.html">
+                                        云墙CWall
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>大数据安全
+                                    <hr>
+                                </dt>
+                                <dd>
+                                    <a href="/productIndustrial/sixCloudWsdom.html">
+                                        云智CiAware
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="#">
+                        解决方案
+                        <!--<span class="glyphicon glyphicon-triangle-top custom-glyphicon triangleTwo"></span>-->
+                    </a>
+                    <ul class="dropdown dropListTwo">
+                        <li>
+                            <span class="glyphicon glyphicon-triangle-top custom-glyphicon triangleTwo"></span>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>解决方案
+                                    <hr>
+                                </dt>
+                                <dd>
+                                    <a href="/solution/solutionCareer.html">
+                                        工业安全解决方案
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/solution/cloudSolution.html">
+                                        云安全解决方案
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/solution/netSecuritySolution.html">
+                                        网络安全解决方案
+                                    </a>
+                                </dd>
+                                <dd>
+                                    <a href="/solution/cloudSolutionExCaree.html">
+                                        大数据安全解决方案
+                                    </a>
+                                </dd>
+                            </dl>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="/portal/list/dengbao.html">等保2.0</a>
+                </li>
+                <li>
+                    <a href="/productIndustrial/superLaboratory.html">AI安全</a>
+                </li>
+                <li>
+                    <a href="/portal/list/news.html">公司新闻</a>
+                </li>
+                <li>
+                    <a href="/aboutUs/cooperation.html">合作发展</a>
+                </li>
+                <li>
+                    <a href="/aboutUs/companyProfile.html">关于我们</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <i class="phone-icon"></i>
+                        400-6060-270
+                    </a>
+                </li>
+            </ul>
+            <!-- /Main navigation -->
+
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- home content -->
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="home-content">
+                        <div id="titleHTML">
+                            <h1 id="bannerH1_1" class="white-text">AI安全</h1>
+                            <h1 id="bannerH1_2" class="white-text" style="display: none;"> 网络攻防 · 人工智能 </h1>
+                            <h1 id="bannerH1_3" class="white-text" style="display: none;">态势感知SSA-云智CiAware </h1>
+                            <p id="bannerP_1" class="white-text">
+                                网络攻防 · 人工智能
+                            </p>
+                            <p id="bannerP_2" class="white-text" style="display: none;">
+                                云安全防护先行者 千锤百炼成一盾、任尔东西南北流
+                            </p>
+                            <p id="bannerP_3" class="white-text" style="display: none;">
+                                感威胁于须臾、溯源头于一瞬 视态势于眼底、护资产于指尖
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /home content -->
+
+            </div>
+        </div>
+    </div>
+    <div class="footer-wrapper md_pc aboutUsNav" style="background: rgba(255,255,255,0.1);">
+        <span>
+            <a id='companyProfile' href="/productIndustrial/superLaboratory.html">
+                实验室简介
+            </a>
+        </span>
+
+        <span>|</span>
+
+        <span>
+            <a id='newsAndActivity' type="lib" href="{:cmf_url('portal/list/weekly')}">
+                安全周刊
+            </a>
+        </span>
+        <span>|</span>
+
+        <span>
+            <a id='newsAndActivity' type="up" class="active" href="{:cmf_url('portal/list/up')}">
+                特征库更新
+            </a>
+        </span>
+        <span>|</span>
+
+        <span>
+            <a id='newsAndActivity' type="down"  href="{:cmf_url('portal/list/down')}">
+                AI安全研究
+            </a>
+        </span>
+    </div>
+</header>
+<!-- /Header -->
+<!-- 关于我们 -->
+<div id="" class="section md-padding bg-grey">
+    <!-- Container -->
+    <div class="container">
+        <!-- Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <!-- 新闻与活动 -->
+                <div class="newsAndActivity-container" style="display: block;">
+
+                    <!-- 左侧导航 -->
+                    <div class="clearfix newsAndActivity-tab hidden">
+
+                        <span class="NAA-nav-item active">
+                            安全周刊
+                        </span>
+                        <span class="NAA-nav-item">
+                            新闻动态
+                        </span>
+                    </div>
+                    <!-- 右侧切换视图 -->
+                    <!-- 新闻详情页 -->
+                    <div class="news-detail-container" style="display: block;">
+
+                        <!-- 标题 -->
+                        <div class="news-detail-title">
+
+                            <div class="col-md-3 title-breadcrumb">
+                                <a href="{:cmf_url('portal/list/up')}"> << 特征库更新</a>
+                            </div>
+
+                            <div class="col-md-7">
+                                <h1>{$article.post_title}</h1>
+                            </div>
+
+                            <div class="col-md-2 title-time">
+                                <span>{:date('Y-m-d H:i',$article.published_time)}</span>
+                            </div>
+
+                        </div>
+                        <!-- 内容 -->
+                        <div class="news-detail-content">
+                            {$article.post_content}
+                        </div>
+                        <!-- end -->
+                        <div class="news-detail-end">
+                            <span>End</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Row -->
+    </div>
+    <!-- /Container -->
+</div>
+<!-- /关于我们  -->
+
+<!-- 互联 -->
+<div id="link" class="section sm-padding">
+
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('/img/background2.jpg');">
+        <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Row -->
+        <div class="row">
+
+            <!-- 互联 -->
+            <div class="col-sm-12 col-xs-12">
+                <div class="number">
+                    <h3 class="white-text"><span class="counter">让万物安全互联</span></h3>
+                    <span class="white-text">实现工业安全互联 · 帮助用户安全上云 · 助力用户全面掌控安全态势</span>
+                </div>
+                <div class="text-center">
+                    <a href="/aboutUs/cooperation.html" class="outline-btn red-btn">
+                        项目咨询
+                    </a>
+                </div>
+            </div>
+            <!-- /互联 -->
+
+        </div>
+        <!-- /Row -->
+
+    </div>
+    <!-- /Container -->
+
+</div>
+<!-- /互联 -->
+
+
+<!-- Footer -->
+<footer id="footer" class="sm-padding bg-dark">
+    <hook name="footer_start"/>
+    <!--footerPic-->
+    <div class="footerPic">
+
+        <!-- Container -->
+        <div class="container">
+
+            <!-- Row -->
+            <div class="row">
+
+                <div class="col-md-3 custom-text">
+
+                    <!-- footer logo -->
+                    <div class="footer-logo col-md-12 custom-companyLogo">
+                        <a href="/index.html"><img src="/img/footerLogol.png" alt="logo"></a>
+                    </div>
+                    <!-- /footer logo -->
+                    <!-- footer phone -->
+                    <div class="col-md-12">
+							<span class="glyphicon glyphicon-phone-alt">
+							</span>
+                        <span class="smallFont">
+								400-6060-270
+								<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								010-86469302
+							</span>
+                    </div>
+                    <!-- /footer phone -->
+
+                </div>
+                <div class="col-md-6 footer-middleCon">
+                    <dl class="col-md-2">
+                        <dt>
+                            <a href="/productIndustrial/industrialFirewall.html">产品</a>
+                        </dt>
+                        <dd>
+                            <a href="/productIndustrial/industrialFirewall.html">工业安全</a>
+                        </dd>
+                        <dd>
+                            <a href="/productIndustrial/networkSecNextWall.html">网络安全</a>
+                        </dd>
+                        <dd>
+                            <a href="/productIndustrial/sixWinton.html">云安全</a>
+                        </dd>
+                        <dd>
+                            <a href="/productIndustrial/sixCloudWsdom.html">大数据安全</a>
+                        </dd>
+                    </dl>
+                    <dl class="col-md-3">
+                        <dt>
+                            <a href="/solution/solutionCareer.html">解决方案</a>
+                        </dt>
+                        <dd>
+                            <a href="/solution/solutionCareer.html">工业行业解决方案</a>
+                        </dd>
+                        <dd>
+                            <a href="/solution/cloudSolution.html">云安全解决方案</a>
+                        </dd>
+                        <dd>
+                            <a href="/solution/netSecuritySolution.html">网络安全解决方案</a>
+                        </dd>
+                        <dd>
+                            <a href="/solution/cloudSolutionExCaree.html">大数据平台解决方案</a>
+                        </dd>
+                    </dl>
+                    <dl class="col-md-2">
+                        <dt>
+                            <a href="/productIndustrial/superLaboratory.html">AI安全</a>
+                        </dt>
+                        <dd></dd>
+                    </dl>
+                    <dl class="col-md-2">
+                        <dt>
+                            <a href="/aboutUs/cooperation.html">合作发展</a>
+                        </dt>
+                        <dd></dd>
+                    </dl>
+                    <dl class="col-md-2">
+                        <dt>
+                            <a href="/aboutUs/companyProfile.html">关于我们</a>
+                        </dt>
+                        <dd>
+                            <a href="/aboutUs/companyProfile.html">公司简介</a>
+                        </dd>
+                        <dd>
+                            <a href="/aboutUs/companyProfile.html?type=2">社会招聘</a>
+                        </dd>
+                        <dd>
+                            <a href="/aboutUs/companyProfile.html?type=3">联系我们</a>
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-3">
+
+                    <!-- footer companyEr -->
+                    <div class="footer-logo custom-logosize">
+                        <a href="#"><img src="/img/WechatIMG89@2x.png" alt="logo"></a>
+                    </div>
+
+                    <div class="col-md-12 fontalign">
+							<span>
+								微信公众号
+							</span>
+                    </div>
+
+                    <!-- /footer companyEr -->
+
+                </div>
+
+                <!-- footer copyright -->
+                <div class="col-md-12 footer-copyright">
+                    <!--<p class="col-md-12">-->
+                    <p class="col-md-6 col-md-offset-3">
+                        版权所有 © 北京六方云科技有限公司
+                    </p>
+                    <div class="col-md-12 text-center">
+                        <a target="_blank"
+                           href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802026786"
+                           style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img
+                                src="/img/police.png" style="float:left;"/>
+                            <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; ">京公网安备
+                                11010802026786号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;京ICP备18030776号</p></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+<php>
+    $after_content_hook_param=[
+    'object_id'=>$article['id'],
+    'table_name'=>'portal_post',
+    'object_title'=>$article['post_title'],
+    'user_id'=>$article['user_id'],
+    'url'=>cmf_url_encode('portal/Article/index',array('id'=>$article['id'],'cid'=>$category['id'])),
+    'object'=>$article
+    ];
+</php>
+<hook name="after_content" param="after_content_hook_param"/>
+<!-- /Footer -->
+<!-- Back to top -->
+<div id="back-to-top"></div>
+<!-- /Back to top -->
+<script src="/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/js/jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/jquery.fittext.js"></script>
+<script type="text/javascript" src="/js/jquery.lettering.js"></script>
+<script type="text/javascript" src="/js/jquery.textillate.js"></script>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- 分享微信标题，描述信息 -->
+<if condition="!empty($article.post_title)">
+    <input type="hidden" id="titleWechat" value="{$article.post_title}-六方云">
+    <else/>
+    <input type="hidden" id="titleWechat" value="六方云">
+</if>
+<if condition="!empty($article.post_title)">
+    <input type="hidden" id="descWechat" value="{$article.post_excerpt}">
+    <else/>
+    <input type="hidden" id="descWechat" value="让万物安全互联">
+</if>
+<if condition="empty($article.more.thumbnail)">
+    <input type="hidden" id="imgWechat" value="http://www.6cloudtech.com/img/logo.jpg">
+    <else/>
+    <input type="hidden" id="imgWechat" value="{:cmf_get_image_url($article.more.thumbnail)}">
+</if>
+<script type="text/javascript"> 
+    var title = $("#titleWechat").val();
+    var desc = $("#descWechat").val();
+    var _shareurl = window.location.href;
+    var image = $("#imgWechat").val();
+    var ishttps = 'https:' == document.location.protocol ? true : false;
+    if(ishttps){
+        image = image.replace("http://","https://");
+    }
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<nav id="nav" class="navbar nav-transparent">
+	<div class="container-fluid ">
+
+		<div class="navbar-header">
+			<!-- Logo -->
+			<div class="navbar-brand navbar-left">
+				<a href={{logo.indexUrl}}>
+					<img class="logo" src={{logo.logoUrl}} alt="logo">
+					<img class="logo-alt" src={{logo.logoAlt}} alt="logo">
+				</a>
+			</div>
+			<!-- /Logo -->
+
+			<!-- Collapse nav button -->
+			<div class="nav-collapse">
+				<span></span>
+			</div>
+			<!-- /Collapse nav button -->
+		</div>
+
+		<!--  Main navigation  -->
+		<ul class="main-nav nav navbar-nav navbar-right">
+
+			{{each navList value index}}
+			<li class={{value.hasDropdown?"has-dropdown":""}}>
+
+				<a href={{value.path}}>
+					{{if value.type==='call'}}
+					<i class="phone-icon"> </i>
+					{{value.name}}
+					   {{else}}
+					   {{value.name}}
+					{{/if}}
+				</a>
+				　{{if value.hasDropdown===true&&value.name==='产品'}}
+
+				<ul class="dropdown solutionListFullScreen">
+
+					<li class="triangle-con">
+						<span class="glyphicon glyphicon-triangle-top custom-glyphicon triangleOne"></span>
+					</li>
+					{{each value.dropdownList item index}}
+					<li>
+						<dl>
+							<dt>
+								{{item.name}}
+								<div class="oneline"></div>
+								{{each  item.child  subItem index}}
+							<dd class="flexSpace">
+								{{if subItem.length===2}}
+
+								<a href={{subItem[0].path}}>
+									{{subItem[0].name}}
+								</a>
+								<a href={{subItem[1].path}}>
+									{{subItem[1].name}}
+								</a>
+								{{else}}
+								<a href={{subItem[0].path}}>
+									{{subItem[0].name}}
+								</a>
+								{{/if}}
+							</dd>
+							{{/each}}
+							</dt>
+						</dl>
+					</li>
+					{{/each}}
+				</ul>
+				{{else if value.hasDropdown===true}}
+				<ul class='dropdown' id={{'dropList'+index}}>
+					<li>
+						<span class="glyphicon glyphicon-triangle-top custom-glyphicon triangleTwo"></span>
+					</li>
+					{{each value.dropdownList item index}}
+					<li>
+						<dl>
+							<dt>
+								{{item.name}}
+								<div class="oneline"></div>
+								{{each  item.child  subItem index}}
+							<dd>
+								{{if subItem.length===2}}
+
+								<a href={{subItem[0].path}}>
+									{{subItem[0].name}}
+								</a>
+								<a href={{subItem[1].path}}>
+									{{subItem[1].name}}
+								</a>
+								{{else}}
+								<a href={{subItem[0].path}}>
+									{{subItem[0].name}}
+								</a>
+								{{/if}}
+							</dd>
+							{{/each}}
+							</dt>
+						</dl>
+					</li>
+					{{/each}}
+
+				</ul>
+
+				{{/if}}
+
+			</li>
+			{{/each}}
+
+		</ul>
+
+
+
+	</div>
+</nav>
